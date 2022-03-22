@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mymedicalappointments;
+package model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -12,16 +13,13 @@ import java.util.Date;
  *
  * @author Darklord
  */
-public class Doctor extends User{
+public class Doctor extends User {
 
-    
-    
     private String speciality;
-    
 
     public Doctor(String name, String email) {
         super(name, email);
-        
+
     }
 
     public String getSpeciality() {
@@ -32,16 +30,14 @@ public class Doctor extends User{
         this.speciality = speciality;
     }
 
-    
     //Comportamientos
     public void showName() {
         System.out.println(super.getName());
     }
-  
 
     ArrayList<AvailableAppointment> availableappointment = new ArrayList<>();
 
-    public void addAvailableAppointment(Date date, String time) {
+    public void addAvailableAppointment(String date, String time) {
         availableappointment.add(new Doctor.AvailableAppointment(date, time));
     }
 
@@ -51,19 +47,29 @@ public class Doctor extends User{
 
     @Override
     public String toString() {
-        return super.toString() + "\nSpeciality" + speciality + "\nAvailbale" + availableappointment.toString(); 
+        return super.toString() + "\nSpeciality" + speciality + "\nAvailbale" + availableappointment.toString();
     }
-    
-    
+
+    @Override
+    public void showDataUser() {
+        System.out.println("Hospital: Cruz Roja");
+        System.out.println("Departamento: Cancerologia");
+    }
 
     public static class AvailableAppointment {
 
         private int id_acailableaapointment;
         private Date date;
         private String time;
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
-        public AvailableAppointment(Date date, String time) {
-            this.date = date;
+        public AvailableAppointment(String date, String time) {
+            try {
+                this.date = format.parse(date);
+            } catch (Exception e) {
+                
+            }
+
             this.time = time;
         }
 
@@ -93,10 +99,8 @@ public class Doctor extends User{
 
         @Override
         public String toString() {
-            return "Available Appointments \nDate: " + date +"\ntime: " + time;
+            return "Available Appointments \nDate: " + date + "\ntime: " + time;
         }
-        
-        
 
     }
 }

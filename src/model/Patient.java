@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mymedicalappointments;
+package model;
 
 /**
  *
@@ -57,6 +57,12 @@ public class Patient extends User{
     public String toString() {
         return super.toString() + "\n Age: " + getBirthday() + "\n Weight: " + getWeight() + "\n Height" + getHeight(); 
         
+    }
+
+    @Override
+    public void showDataUser() {
+        System.out.println("Paciente");
+        System.out.println("Historial del paciente");
     }
     
     

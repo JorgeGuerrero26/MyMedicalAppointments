@@ -5,7 +5,7 @@
  */
 
 
-package mymedicalappointments;
+package model;
 
 import java.util.Date;
 import ui.UIMenu;
@@ -21,9 +21,11 @@ public class main {
     public static void main(String[] args) {
         // TODO code application logic here
         Doctor doctor = new Doctor("Jorge","Macrobiologia");
-        doctor.addAvailableAppointment(new Date(), "4am");
-        doctor.addAvailableAppointment(new Date(), "10am");
-        doctor.addAvailableAppointment(new Date(), "1pm");
+        doctor.addAvailableAppointment("10/10/2022", "4am");
+        doctor.addAvailableAppointment("10/10/2022", "10am");
+        doctor.addAvailableAppointment("10/10/2022", "1pm");
+        
+        
         
         for ( Doctor.AvailableAppointment Aa : doctor.getAvailableAppointment()) {
             System.out.println(Aa.getDate() + " " + Aa.getTime() );
@@ -37,6 +39,20 @@ public class main {
         System.out.println(patient.getPhoneNumber());
         System.out.println(patient);
         
+        User user = new Doctor("Anahi", "Anahi@gmail.com");
+        user.showDataUser();
+        
+        User user1 = new User("Anahi","Anahi@gmail.com"){
+            @Override
+            public void showDataUser(){
+                System.out.println("Doctor");
+                System.out.println("Departamento de Geriatria");
+            }
+        };
+        
+        user1.showDataUser();
+        
+ 
         
     }
     
